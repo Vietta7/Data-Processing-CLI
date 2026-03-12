@@ -9,32 +9,36 @@ export async function startRepl(state) {
 
   const showDir = () => console.log(`You are currently in ${state.directory}`);
 
-  const prompt = () => {
-    rl.question('> ', async (input) => {
-      const trimmed = input.trim();
+  return new Promise((resolve) => {
+    rl.on('close', resolve);
 
-      if (!trimmed) {
+    const prompt = () => {
+      rl.question('> ', async (input) => {
+        const trimmed = input.trim();
+
+        if (!trimmed) {
+          prompt();
+          return;
+        }
+
+        if (trimmed === '.exit') {
+          rl.close();
+          return;
+        }
+
+        try {
+          await handleCommand(trimmed, state);
+        } catch (err) {
+          console.error(err.message);
+        }
+
+        showDir();
         prompt();
-        return;
-      }
+      });
+    };
 
-      if (trimmed === '.exit') {
-        rl.close();
-        return;
-      }
-
-      try {
-        await handleCommand(trimmed, state);
-      } catch (err) {
-        console.error(err.message);
-      }
-
-      showDir();
-      prompt();
-    });
-  };
-
-  console.log('Welcome to Data Processing CLI!');
-  showDir();
-  prompt();
+    console.log('Welcome to Data Processing CLI!');
+    showDir();
+    prompt();
+  });
 }
