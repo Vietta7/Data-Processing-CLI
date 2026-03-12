@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Vietta7/Data-Processing-CLI/issues"
   },
-  "homepage": "https://github.com/Vietta7/Data-Processing-CLI#readme"
+  "homepage": "https://github.com/Vietta7/Data-Processing-CLI#readme",
+  "engines": {
+  "node": ">=20.0.0"
+  }
 }
