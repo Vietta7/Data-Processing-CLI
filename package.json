@@ -1,0 +1,22 @@
+{
+  "name": "data-processing-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vietta7/Data-Processing-CLI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Vietta7/Data-Processing-CLI/issues"
+  },
+  "homepage": "https://github.com/Vietta7/Data-Processing-CLI#readme"
+}
