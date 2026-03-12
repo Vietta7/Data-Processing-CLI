@@ -1,24 +1,29 @@
-import { ValidationError, OperationError } from './errors.js';
-import { goUp, changeDir, listDir } from './navigation.js';
-import { csvToJson } from './commands/csvToJson.js';
+import { ValidationError, OperationError } from "./errors.js";
+import { goUp, changeDir, listDir } from "./navigation.js";
+import { csvToJson } from "./commands/csvToJson.js";
+import { jsonToCsv } from "./commands/jsonToCsv.js";
 
 export async function handleCommand(input, state) {
   const [command, ...args] = input.trim().split(/\s+/);
 
   switch (command) {
-    case 'up':
+    case "up":
       await goUp(state);
       break;
-    case 'cd':
+    case "cd":
       await changeDir(state, args);
       break;
-    case 'ls':
+    case "ls":
       await listDir(state);
       break;
-    case 'csv-to-json':
+    case "csv-to-json":
       await csvToJson(args, state);
       break;
+    case "json-to-csv":
+      await jsonToCsv(args, state);
+      break;
+
     default:
-      throw new ValidationError('Invalid input');
+      throw new ValidationError("Invalid input");
   }
 }
