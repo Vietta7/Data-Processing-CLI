@@ -3,6 +3,7 @@ import { goUp, changeDir, listDir } from "./navigation.js";
 import { csvToJson } from "./commands/csvToJson.js";
 import { jsonToCsv } from "./commands/jsonToCsv.js";
 import { countCommand } from "./commands/count.js";
+import { hashCommand } from './commands/hash.js';
 
 export async function handleCommand(input, state) {
   const [command, ...args] = input.trim().split(/\s+/);
@@ -25,6 +26,9 @@ export async function handleCommand(input, state) {
       break;
     case "count":
       await countCommand(args, state);
+      break;
+      case 'hash':
+      await hashCommand(args, state);
       break;
 
     default:
