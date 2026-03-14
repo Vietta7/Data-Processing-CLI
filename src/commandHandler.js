@@ -6,6 +6,7 @@ import { countCommand } from "./commands/count.js";
 import { hashCommand } from './commands/hash.js';
 import { hashCompare } from './commands/hashCompare.js';
 import { encrypt } from './commands/encrypt.js';
+import { decrypt } from './commands/decrypt.js';
 
 export async function handleCommand(input, state) {
   const [command, ...args] = input.trim().split(/\s+/);
@@ -37,6 +38,9 @@ export async function handleCommand(input, state) {
       break;
     case 'encrypt':
       await encrypt(args, state);
+      break;
+    case 'decrypt':
+      await decrypt(args, state);
       break;
 
     default:
