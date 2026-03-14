@@ -5,6 +5,7 @@ import { jsonToCsv } from "./commands/jsonToCsv.js";
 import { countCommand } from "./commands/count.js";
 import { hashCommand } from './commands/hash.js';
 import { hashCompare } from './commands/hashCompare.js';
+import { encrypt } from './commands/encrypt.js';
 
 export async function handleCommand(input, state) {
   const [command, ...args] = input.trim().split(/\s+/);
@@ -33,6 +34,9 @@ export async function handleCommand(input, state) {
       break;
     case 'hash-compare':
       await hashCompare(args, state);
+      break;
+    case 'encrypt':
+      await encrypt(args, state);
       break;
 
     default:
